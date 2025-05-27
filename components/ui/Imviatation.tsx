@@ -54,13 +54,17 @@ const sendInvitation = async (
       message: `Invitation sent successfully to ${venderFirstname} ${VenderOtherName}`,
       data: result,
     };
-  } catch (error: any) {
-    console.error("Send invitation error:", error);
-    return {
-      success: false,
-      message: error.message,
-      data: null,
-    };
+  }  catch (error: unknown) {
+  console.error("Send invitation error:", error);
+  const errorMessage =
+    error instanceof Error ? error.message : "An unknown error occurred";
+  return {
+    success: false,
+    message: errorMessage,
+    data: null,
+  };
+
+   
   }
 };
 
@@ -104,9 +108,16 @@ const Invitation = () => {
       toast.error(`Error: ${result.message}`);
       console.error("Error:", result.message);
     }
-  } catch (error: any) {
-    toast.error(`Unexpected error: ${error.message}`);
-    console.error("Unexpected error:", error);
+  } catch (error: unknown) {
+  console.error("Send invitation error:", error);
+  const errorMessage =
+    error instanceof Error ? error.message : "An unknown error occurred";
+  return {
+    success: false,
+    message: errorMessage,
+    data: null,
+  };
+
   } finally {
     setIsLoading(false);
   }

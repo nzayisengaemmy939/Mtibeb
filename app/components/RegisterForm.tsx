@@ -29,9 +29,9 @@ export default function RegisterForm() {
     try {
       await register(formData);
       router.push('/login');
-    } catch (e) {
-      // Error is handled by AuthContext
-    } finally {
+    } catch (error) {
+  console.error(error);
+} finally {
       setLoading(false);
     }
   };

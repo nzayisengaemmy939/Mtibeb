@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Star, ThumbsUp, MessageSquare } from 'lucide-react';
+import { Star, ThumbsUp } from 'lucide-react';
 import { fetchApi } from '@/lib/api';
 
 interface Review {
@@ -36,7 +36,7 @@ export default function ProductReviews({ productId, averageRating, totalReviews 
     rating: 5,
     comment: ''
   });
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {

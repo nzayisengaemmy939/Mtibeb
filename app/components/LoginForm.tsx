@@ -17,9 +17,9 @@ export default function LoginForm() {
     try {
       await login(email, password);
       router.push('/dashboard'); // Will be redirected based on role
-    } catch (e) {
-      // Error is handled by AuthContext
-    } finally {
+    } catch (error) {
+  console.error(error);
+} finally {
       setLoading(false);
     }
   };

@@ -17,9 +17,6 @@ interface Particle {
   opacity: number;   // add this line
 }
 
-interface ParticleWithOpacity extends Particle {
-  opacity: number;
-}
 
 
 export default function ContactPage() {
@@ -35,7 +32,6 @@ export default function ContactPage() {
 
   
 const [particles, setParticles] = useState<Particle[]>([]);;
-  const canvasRef = useRef(null);
 
   // Mouse tracking for interactive effects
   useEffect(() => {

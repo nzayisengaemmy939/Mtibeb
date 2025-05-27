@@ -63,11 +63,6 @@ interface Column<T> {
   render?: (value: any, row: T) => React.ReactNode;
 }
 
-interface DataTableProps<T> {
-  data: T[];
-  columns: Column<T>[];
-  actions?: boolean;
-}
 
 export default function Dashboard() {
   const [activeSection, setActiveSection] = useState("stats");
