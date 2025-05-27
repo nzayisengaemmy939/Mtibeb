@@ -57,12 +57,6 @@ interface ActionButtonProps {
   variant?: string;
 }
 
-interface Column<T> {
-  key: keyof T;
-  label: string;
-  render?: (value: any, row: T) => React.ReactNode;
-}
-
 
 export default function Dashboard() {
   const [activeSection, setActiveSection] = useState("stats");
@@ -287,32 +281,44 @@ export default function Dashboard() {
     return null;
   };
 
-  const StatCard = ({ stat }: { stat: any }) => (
-    <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-yellow-500/20 hover:border-yellow-500/40 transition-all duration-300 hover:transform hover:scale-105">
-      <div className="flex items-center justify-between mb-4">
-        <div
-          className={`p-3 rounded-lg ${
-            stat.positive ? "bg-green-500/20" : "bg-red-500/20"
-          }`}
-        >
-          <stat.icon
-            className={`w-6 h-6 ${
-              stat.positive ? "text-green-400" : "text-red-400"
-            }`}
-          />
-        </div>
-        <span
-          className={`text-sm font-medium ${
+ type Stat = {
+  title: string;
+  value: string | number;
+  change: string;
+  positive: boolean;
+  icon: React.ComponentType<{ className?: string }>;
+};
+
+type StatCardProps = {
+  stat: Stat;
+};
+
+const StatCard = ({ stat }: StatCardProps) => (
+  <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-yellow-500/20 hover:border-yellow-500/40 transition-all duration-300 hover:transform hover:scale-105">
+    <div className="flex items-center justify-between mb-4">
+      <div
+        className={`p-3 rounded-lg ${
+          stat.positive ? "bg-green-500/20" : "bg-red-500/20"
+        }`}
+      >
+        <stat.icon
+          className={`w-6 h-6 ${
             stat.positive ? "text-green-400" : "text-red-400"
           }`}
-        >
-          {stat.change}
-        </span>
+        />
       </div>
-      <h3 className="text-2xl font-bold text-white mb-1">{stat.value}</h3>
-      <p className="text-gray-400 text-sm">{stat.title}</p>
+      <span
+        className={`text-sm font-medium ${
+          stat.positive ? "text-green-400" : "text-red-400"
+        }`}
+      >
+        {stat.change}
+      </span>
     </div>
-  );
+    <h3 className="text-2xl font-bold text-white mb-1">{stat.value}</h3>
+    <p className="text-gray-400 text-sm">{stat.title}</p>
+  </div>
+);
 
   const ActionButton: React.FC<ActionButtonProps> = ({
     icon: Icon,

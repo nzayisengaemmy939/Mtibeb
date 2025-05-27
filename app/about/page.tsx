@@ -129,20 +129,21 @@ export default function AboutUs() {
 
   const NavigationDots = () => (
     <div className="fixed right-8 top-1/2 transform -translate-y-1/2 space-y-4 z-40">
-      {sections.map((_, index) => (
-        <button
-          key={index}
-          onClick={() => {
-            const element = document.getElementById(sections[index].id);
-            element?.scrollIntoView({ behavior: "smooth" });
-          }}
-          className={`w-3 h-3 rounded-full transition-all duration-300 ${
-            activeSection === index
-              ? "bg-white scale-125 shadow-lg"
-              : "bg-white/40 hover:bg-white/60"
-          }`}
-        />
-      ))}
+    {sections.map((section, index) => (
+  <button
+    key={index}
+    onClick={() => {
+      const element = document.getElementById(section.id);
+      element?.scrollIntoView({ behavior: "smooth" });
+    }}
+    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+      activeSection === index
+        ? "bg-white scale-125 shadow-lg"
+        : "bg-white/40 hover:bg-white/60"
+    }`}
+  />
+))}
+
     </div>
   );
 

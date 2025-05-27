@@ -41,9 +41,9 @@ export default function VendorRegisterForm() {
         token
       });
       router.push('/login');
-    } catch (e) {
-      // Error is handled by AuthContext
-    } finally {
+    } catch (error) {
+  console.error(error);
+     } finally {
       setLoading(false);
     }
   };
