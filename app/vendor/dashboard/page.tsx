@@ -8,8 +8,7 @@ import {
   TrendingUp, 
   Star,
   AlertCircle,
-  Settings,
-  BarChart2,
+ 
   Users
 } from 'lucide-react';
 import { fetchApi } from '@/lib/api';
@@ -52,7 +51,7 @@ export default function VendorDashboard() {
   });
   const [products, setProducts] = useState<Product[]>([]);
   const [recentOrders, setRecentOrders] = useState<RecentOrder[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadDashboardData() {

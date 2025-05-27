@@ -43,7 +43,6 @@ const FloatingOrb = ({ delay = 0, size = "w-4 h-4" }) => (
 
 export const GlassmorphismCard = ({
   children,
-  offset = 0,
   delay = 0,
   className,
 }: ParallaxProps) => (
@@ -122,11 +121,10 @@ export const InteractiveButton = ({
 
 export const ParallaxSection = ({
   children,
-  offset,
-  delay = 0,
+ 
   className,
 }: ParallaxProps) => {
-  const [scrollY, setScrollY] = useState(0);
+  const [, setScrollY] = useState(0);
   const ref = useRef(null);
 
   useEffect(() => {
@@ -404,7 +402,7 @@ const HomePage = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[0, 1, 2].map((index) => (
+                {[0, 1, 2].map(() => (
                   <ProductCard3D />
                 ))}
               </div>

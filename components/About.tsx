@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Ripple } from '@/app/page';
-import { ButtonProps } from '@/app/page';
+import React, {  } from 'react'
+
 import { GlassmorphismCard } from '@/app/page';
 
 import { ParallaxSection  } from '@/app/page';
@@ -8,12 +7,6 @@ import { InteractiveButton  } from '@/app/page';
 
 
 
-type ParallaxProps = {
-  children: React.ReactNode;
-  offset?: number;
-  delay?: number; 
-  className?: string;
-};
 
 
 

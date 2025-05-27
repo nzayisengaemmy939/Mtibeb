@@ -32,9 +32,16 @@ const VendorRegister = () => {
       if (!res.ok) throw new Error(data.message || "Something went wrong");
       toast.success("Vendor registered successfully!");
       router.push("/login");
-    } catch (error: any) {
-      toast.error(error.message);
-    }
+    } catch (error: unknown) {
+  console.error("Send invitation error:", error);
+  const errorMessage =
+    error instanceof Error ? error.message : "An unknown error occurred";
+  return {
+    success: false,
+    message: errorMessage,
+    data: null,
+  };
+}
   };
 
   const renderInput = (

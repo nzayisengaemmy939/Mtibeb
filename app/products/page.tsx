@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Search, Filter, Sparkles, ShoppingBag } from 'lucide-react';
+import { Search, Filter, Sparkles } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 ;
@@ -112,7 +112,7 @@ const LoadingCard = () => (
 );
 
 // Product card component
-const ProductCard= ({ product, index }: { product: Product; index: number }) => {
+const ProductCard= ({  }: { product: Product; index: number }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden w-[350px]">
       {/* Image at Top, Full Width */}
