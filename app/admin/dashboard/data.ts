@@ -1,18 +1,12 @@
  import {
-  BarChart3,
+ 
   Users,
   Package,
   Settings,
   TrendingUp,
   UserCheck,
   Activity,
-  Plus,
-  Search,
-  Filter,
-  Download,
-  Edit,
-  Trash2,
-  Eye,
+
 } from "lucide-react";
  
 export  const stats = [

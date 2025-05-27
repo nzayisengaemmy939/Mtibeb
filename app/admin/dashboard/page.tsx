@@ -3,18 +3,12 @@ import { useState, useEffect, useRef } from "react";
 import {
   BarChart3,
   Users,
-  Package,
   Settings,
   TrendingUp,
-  UserCheck,
-  Activity,
   Plus,
   Search,
   Filter,
   Download,
-  Edit,
-  Trash2,
-  Eye,
 } from "lucide-react";
 
 import {
@@ -665,7 +659,7 @@ export default function Dashboard() {
                 {
                   key: "status",
                   label: "Status",
-                  render: (status) => <StatusBadge status={status} />,
+                  render: (status) => <StatusBadge status={String(status)} />,
                 },
                 { key: "revenue", label: "Revenue" },
               ]}
@@ -728,7 +722,7 @@ export default function Dashboard() {
                 {
                   key: "status",
                   label: "Status",
-                  render: (status) => <StatusBadge status={status} />,
+                  render: (status) => <StatusBadge status={String(status)} />,
                 },
               ]}
             />

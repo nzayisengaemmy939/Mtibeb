@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Icon } from "lucide-react";
+
 
 interface UserInfo {
   email: string;
@@ -43,7 +43,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("/");
-  const [notifications, setNotifications] = useState(3);
+  const [notifications] = useState(3);
 
   useEffect(() => {
     const fetchUser = async () => {

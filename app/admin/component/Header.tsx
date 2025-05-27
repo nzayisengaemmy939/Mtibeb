@@ -1,23 +1,11 @@
 import React, { useState } from 'react'
 import {
-  BarChart3,
   Users,
   Package,
   Settings,
-  TrendingUp,
-  ShoppingCart,
   UserCheck,
   Activity,
-  Plus,
-  Search,
   Bell,
-  Filter,
-  Download,
-  Edit,
-  Trash2,
-  Eye,
-  PieChart,
-  LineChart,
 } from "lucide-react";
 
 
@@ -31,7 +19,7 @@ const Header = () => {
         { id: "settings", label: "Settings", icon: Settings },
       ];
 
-      const [activeSection, setActiveSection] = useState("stats");
+      const [activeSection] = useState("stats");
   return (
     <header className="bg-gradient-to-r from-[#111529] to-[#1a1f3a] shadow-lg border-b border-yellow-500/20">
             <div className="px-8 py-6">

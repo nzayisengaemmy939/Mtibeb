@@ -4,15 +4,23 @@ import { useState, useEffect, useRef } from 'react';
 import { Mail, Phone, MapPin, Send, Zap, Clock, Star, Sparkles, MessageCircle, User, AtSign, FileText } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-type Particle = {
-  size: any;
-  opacity:  undefined;
-  id:  null | undefined;
+import React from 'react';
+
+
+interface Particle {
+  id: number;
   x: number;
   y: number;
   vx: number;
   vy: number;
-};
+  size: number;
+  opacity: number;   // add this line
+}
+
+interface ParticleWithOpacity extends Particle {
+  opacity: number;
+}
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -23,7 +31,8 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [activeField, setActiveField] = useState(null);
+  const [activeField, setActiveField] = React.useState<keyof typeof formData | null>(null);
+
   
 const [particles, setParticles] = useState<Particle[]>([]);;
   const canvasRef = useRef(null);
@@ -103,12 +112,19 @@ const [particles, setParticles] = useState<Particle[]>([]);;
     }
   ];
 
-  const formFields = [
-    { id: 'name', label: 'Your Name', type: 'text', icon: User, placeholder: 'John Doe' },
-    { id: 'email', label: 'Email Address', type: 'email', icon: AtSign, placeholder: 'john@example.com' },
-    { id: 'subject', label: 'Subject', type: 'text', icon: FileText, placeholder: 'How can we help?' },
-    { id: 'message', label: 'Message', type: 'textarea', icon: MessageCircle, placeholder: 'Tell us more...' }
-  ];
+const formFields: {
+  id: keyof typeof formData;
+  label: string;
+  type: string;
+  icon: React.ComponentType<any>;
+  placeholder: string;
+}[] = [
+  { id: 'name', label: 'Your Name', type: 'text', icon: User, placeholder: 'John Doe' },
+  { id: 'email', label: 'Email Address', type: 'email', icon: AtSign, placeholder: 'john@example.com' },
+  { id: 'subject', label: 'Subject', type: 'text', icon: FileText, placeholder: 'How can we help?' },
+  { id: 'message', label: 'Message', type: 'textarea', icon: MessageCircle, placeholder: 'Tell us more...' }
+];
+
 
   return (
     <>

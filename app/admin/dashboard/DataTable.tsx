@@ -4,7 +4,7 @@ import { Eye, Edit, Trash2 } from "lucide-react";
 interface Column<T> {
   key: keyof T;
   label: string;
-  render?: (value: any, row: T) => React.ReactNode;
+render?: (value: T[keyof T], row: T) => React.ReactNode;
 }
 
 interface DataTableProps<T> {
