@@ -45,35 +45,35 @@ export default function Navbar() {
   const [activeLink, setActiveLink] = useState("/");
   const [notifications] = useState(3);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const token =
-        typeof window !== "undefined" ? localStorage.getItem("token") : null;
-      if (!token) {
-        setLoading(false);
-        return;
-      }
-      try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        if (!res.ok) throw new Error("Not authenticated");
-        const data = await res.json();
-        setUser(data);
-      } catch (error) {
-        console.error("User fetch failed:", error);
-        setUser(null);
-        if (typeof window !== "undefined") {
-          localStorage.removeItem("token");
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchUser();
-  }, []);
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const token =
+  //       typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  //     if (!token) {
+  //       setLoading(false);
+  //       return;
+  //     }
+  //     try {
+  //       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/me`, {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
+  //       if (!res.ok) throw new Error("Not authenticated");
+  //       const data = await res.json();
+  //       setUser(data);
+  //     } catch (error) {
+  //       console.error("User fetch failed:", error);
+  //       setUser(null);
+  //       if (typeof window !== "undefined") {
+  //         localStorage.removeItem("token");
+  //       }
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchUser();
+  // }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -98,22 +98,22 @@ export default function Navbar() {
     { href: "/contact", label: "Contact", icon: Mail },
   ];
 
-  const FloatingOrbs = () => (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(6)].map((_, i) => (
-        <div
-          key={i}
-          className="absolute w-4 h-4 bg-gradient-to-r from-amber-400/20 to-purple-400/20 rounded-full animate-pulse"
-          style={{
-            left: `${10 + i * 15}%`,
-            top: `${20 + (i % 2) * 60}%`,
-            animationDelay: `${i * 0.5}s`,
-            animationDuration: `${3 + i * 0.5}s`,
-          }}
-        />
-      ))}
-    </div>
-  );
+  // const FloatingOrbs = () => (
+  //   <div className="absolute inset-0 overflow-hidden pointer-events-none">
+  //     {[...Array(6)].map((_, i) => (
+  //       <div
+  //         key={i}
+  //         className="absolute w-4 h-4 bg-gradient-to-r from-amber-400/20 to-purple-400/20 rounded-full animate-pulse"
+  //         style={{
+  //           left: `${10 + i * 15}%`,
+  //           top: `${20 + (i % 2) * 60}%`,
+  //           animationDelay: `${i * 0.5}s`,
+  //           animationDuration: `${3 + i * 0.5}s`,
+  //         }}
+  //       />
+  //     ))}
+  //   </div>
+  // );
 
  const GlowingButton = ({ children, onClick, className = "" }: GlowingButtonProps) => (
   <button
@@ -151,7 +151,7 @@ export default function Navbar() {
             : "bg-gradient-to-r from-[#1A1A2E]/95 via-[#16213E]/95 to-[#0F0F23]/95 backdrop-blur-md"
         }`}
       >
-        <FloatingOrbs />
+        {/* <FloatingOrbs /> */}
 
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">

@@ -24,7 +24,7 @@ export default function AboutUs() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const containerRef = useRef(null);
-
+         ``
   const sections = [
     {
       id: "Meet the Builder",

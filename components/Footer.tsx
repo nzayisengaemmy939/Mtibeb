@@ -46,7 +46,7 @@ export default function Footer() {
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full">
-          {[...Array(20)].map((_, i) => (
+          {/* {[...Array(20)].map((_, i) => (
             <div
               key={i}
               className="absolute animate-pulse"
@@ -59,7 +59,7 @@ export default function Footer() {
             >
               <TreePine className="w-4 h-4 text-green-400" />
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
 
