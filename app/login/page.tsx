@@ -5,6 +5,13 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { jwtDecode } from "jwt-decode";
+
+interface DecodedToken {
+  role: string;
+  [key: string]: any;
+}
 
 export default function LoginPage() {
   const router = useRouter();
@@ -33,18 +40,23 @@ export default function LoginPage() {
         throw new Error(data.error || "Login failed");
       }
 
-      // Store the token
       localStorage.setItem("token", data.token);
-
-      // Redirect to home page
-      router.push("/products");
+      
+  const decoded: DecodedToken = jwtDecode(data.token);
+  toast.success("loggin successfully");
+ 
+  if (decoded.role === "VENDOR") {
+    router.push("/vendor/dashboard");
+  } else {
+    router.push("/products");
+  }
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
     }
   };
 
   return (
-    <main className="bg-[#2E2E2E] text-white min-h-screen flex items-center justify-center px-4">
+    <main className="bg-[#111529] text-white min-h-screen flex items-center justify-center px-4">
       <motion.div
         className="w-full max-w-md"
         initial={{ opacity: 0, y: 20 }}
@@ -112,3 +124,5 @@ export default function LoginPage() {
     </main>
   );
 }
+/* Removed unused local jwt_decode function since we are using the library's jwtDecode */
+
